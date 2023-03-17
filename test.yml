@@ -1,0 +1,21 @@
+---
+- name: Gather information from routers
+  hosts: all
+  connection: network_cli 
+  gather_facts: no
+  
+  vars: 
+   ansible_network_os: ios
+   vlan: 10
+   
+  tasks:
+    - name: GATHER ROUTER FACTS
+      ios_facts:
+      
+    - name: DISPLAY VERSION
+      debug:
+        msg: “The IOS version is:{{ ansible_net_version }}”
+        
+    - name: DISPLAY SERIAL NUMBER
+      debug:
+        msg: “The serial number is:{{ ansible_net_serialnum }}”
